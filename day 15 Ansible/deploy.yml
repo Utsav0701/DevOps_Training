@@ -1,0 +1,31 @@
+---
+- name: Deploy Docker Container
+  hosts: servers
+  become: true
+
+  tasks:
+    - name: Install Docker
+      apt:
+        name: docker.io
+        state: present
+
+    - name: Ensure Docker is started
+      systemd:
+        name: docker
+        state: started
+        enabled: true
+
+    - name: Pull Docker image
+      docker_image:
+        name: utsavshah0305/day15
+        tag: latest
+        source: pull
+
+    - name: Run Docker container
+      docker_container:
+        name: java-app
+        image: utsavshah0305/day15:latest
+        state: started
+        restart_policy: always
+        ports:
+          - "8085:8085"
