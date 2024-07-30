@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: day9-image
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: day9-image
+  template:
+    metadata:
+      labels:
+        app: day9-image
+    spec:
+      containers:
+      - name: day9-image
+        image: utsavshah0305/day9-image:latest
+        resources:
+          requests:
+            cpu: "20m"
+          limits:
+            cpu: "50m"
+        ports:
+        - containerPort: 80
