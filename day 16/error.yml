@@ -19,3 +19,8 @@
           service:
             name: nginx
             state: started
+        
+      always:
+        - name: Always Block
+          debug:
+            msg: "Always going to be executed.."
