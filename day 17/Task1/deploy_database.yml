@@ -1,0 +1,61 @@
+- hosts: web
+  become: yes
+  vars:
+    mysql_custom_settings:
+      max_connections: 200
+      query_cache_size: 16M
+
+  tasks:
+    - name: update cache as apt-get update
+      apt:
+        update_cache: yes
+
+    - name: install mysql and its dependencies
+      apt:
+        name: ['mysql-server', 'mysql-client', 'python3-mysqldb', 'libmysqlclient-dev']
+        state: present
+
+    - name: enable the MySQL service
+      service:
+        name: mysql
+        state: started
+        enabled: yes
+
+    - name: create a user in the database
+      mysql_user:
+        name: utsav
+        password: utsav1234
+        priv: '*.*:ALL'
+        host: '%'
+        state: present
+
+    - name: changing configuration file using template
+      template:
+        src: "/home/einfochips/Desktop/einfochips/DevOps_Training/day 17/templates/sql_hba.conf.j2"
+        dest: "/etc/mysql/sql_hba.conf.j2" 
+      notify:
+        - restart mysql
+
+    - name: Create backup directory
+      file:
+        path: "/var/backups/mysql/"
+        state: directory
+        mode: '0755'
+
+    - name: copy the script
+      ansible.builtin.copy:
+        src: "/home/einfochips/Desktop/einfochips/DevOps_Training/day 17/scripts/backup.sh"
+        dest: "/home/ubuntu/backup.sh"
+        mode: '755'
+
+    - name: database backup using cron job
+      cron:
+        name: "MySQL Backup"
+        minute: "*/1"
+        job: /home/ubuntu/backup.sh
+
+  handlers:
+    - name: restart mysql
+      service:
+        name: mysql
+        state: restarted
