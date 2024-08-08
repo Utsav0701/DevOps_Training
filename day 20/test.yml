@@ -1,0 +1,22 @@
+---
+- name: Optimize Deployment
+  hosts: all
+  become: yes 
+  tasks:
+    - name: Install apache2 
+      apt:
+        name: apache2
+        state: present
+      become: yes
+
+    - name: Ensure the web server is running
+      service:
+       name: apache2ki
+       state: started
+      register: result
+      ignore_errors: yes
+
+    - name: Log error if web server failed to start
+      debug:
+       msg: "Failed to start apache2"
+      when: result is failed
