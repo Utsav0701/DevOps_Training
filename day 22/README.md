@@ -42,7 +42,6 @@
   * Demonstrate successful data collection from both exporters.  
   * Create a basic Prometheus dashboard to visualize key metrics from these exporters.
 
-
     1. wget https://github.com/prometheus/mysqld_exporter/releases/download/v0.15.1/mysqld_exporter-0.15.1.linux-amd64.tar.gz
     2. tar xvf mysqld_exporter-0.15.1.linux-amd64.tar.gz
     3. cd mysqld_exporter-0.15.1.linux-amd64
