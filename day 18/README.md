@@ -279,14 +279,14 @@ correctly and can communicate with each other.
   ```
   ansible-playbook -i inventory.ini playbooks/deploy.yml
   ```
-  ![alt text](image.png)
+  ![alt text](./Pictures/image.png)
 
-  ![alt text](image-1.png)
+  ![alt text](./Pictures/image-1.png)
 
-  ![alt text](image-2.png)
+  ![alt text](./Pictures/image-2.png)
 
   Final Output to check the index.html file
-  ![alt text](image-3.png)
+  ![alt text](./Pictures/image-3.png)
 
 7.  Testing and Validation
 
