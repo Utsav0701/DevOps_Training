@@ -1,11 +1,11 @@
 variable "aws_region" {
   description = "The AWS region to deploy resources in"
-  default     = "us-west-1"
+  default     = "region-name"
 }
 
 variable "ami_id" {
   description = "AMI ID for the EC2 instance"
-  default     = "ami-0ff591da048329e00"
+  default     = "ami-***********"
 }
 
 variable "instance_type" {
@@ -16,10 +16,10 @@ variable "instance_type" {
 
 variable "db_username" {
   description = "Database username"
-  default     = "admin"
+  default     = "******"
 }
 
 variable "db_password" {
   description = "Database password"
-  default     = "password123"
+  default     = "********"
 }
