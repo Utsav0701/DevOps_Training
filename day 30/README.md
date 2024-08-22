@@ -54,7 +54,7 @@ Participants will create a Terraform configuration that deploys an EC2 instance 
 3. **Provisioner Implementation**:  
    * **Remote Execution**: Use the `remote-exec` provisioner to SSH into the EC2 instance and execute a script that installs Apache.  
 
-       ```tf
+    ```tf
     provider "aws" {
     region = var.region
     }
