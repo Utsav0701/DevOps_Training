@@ -1,0 +1,19 @@
+ingress:
+  enabled: false
+  # Other ingress configurations
+
+image:
+  repository: utsavshah0305/helm-repo-demo
+  tag: "1.0"
+  pullPolicy: IfNotPresent
+
+service:
+  type: ClusterIP
+  port: 80
+
+mysql:
+  auth:
+    rootPassword: root_password
+    username: user
+    password: user_password
+    database: myappdb

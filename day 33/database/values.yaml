@@ -1,0 +1,21 @@
+database:
+  host: utsav-mydb.us-east-2.rds.amazonaws.com
+  user: admin
+  password: password
+  name: mydatabase
+
+service:
+  port: 80  # Replace 80 with the correct port number if needed
+
+serviceAccount:
+  create: true
+  name: my-service-account  # Replace with the desired name
+  automount: true  # Set to true or false based on your needs
+  annotations: {}  # Optional: Add any annotations if required
+
+image:
+  repository: utsavshah0305/helm-repo-demo  # Replace with your actual Docker image repository
+  tag: 1.0  # Replace with the desired image tag
+env:
+  dbMaxConnections: "100"  # Replace with your desired value
+  dbConnectionTimeout: "30"
